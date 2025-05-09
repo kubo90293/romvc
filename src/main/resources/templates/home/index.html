@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Kaiadmin - Bootstrap 5 Admin Dashboard</title>
+    <div th:replace="fragments/heads :: heads"></div>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+    <!-- End Sidebar -->
+
+    <div class="main-panel">
+        <div class="main-header">
+            <div class="main-header-logo">
+                <!-- Logo Header -->
+                <div th:replace="fragments/logo :: logo"></div>
+                <!-- End Logo Header -->
+            </div>
+            <!-- Navbar Header -->
+            <div th:replace="fragments/navbar :: navbar"></div>
+            <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+            <div class="page-inner">
+                <div
+                        class="d-flex align-items-left align-items-md-center flex-column flex-md-row pt-2 pb-4"
+                >
+                    <div>
+                        <h3 class="fw-bold mb-3">Dashboard</h3>
+                        <h6 class="op-7 mb-2">Free Bootstrap 5 Admin Dashboard</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragments/footer :: footer"></div>
+
+    </div>
+
+</div>
+<div th:replace="fragments/scripts-footer :: scripts-footer"></div>
+
+</body>
+</html>

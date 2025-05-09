@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Cadastro de Usuários</title>
+    <div th:replace="fragments/heads :: heads"></div>
+</head>
+<body>
+<div class="wrapper">
+    <!-- Sidebar -->
+    <div th:replace="fragments/sidebar :: sidebar"></div>
+    <!-- End Sidebar -->
+
+    <div class="main-panel">
+        <div class="main-header">
+            <div class="main-header-logo">
+                <!-- Logo Header -->
+                <div th:replace="fragments/logo :: logo"></div>
+                <!-- End Logo Header -->
+            </div>
+            <!-- Navbar Header -->
+            <div th:replace="fragments/navbar :: navbar"></div>
+            <!-- End Navbar -->
+        </div>
+
+        <div class="container">
+            <div class="page-inner">
+                <div class="page-header">
+                    <h3 class="fw-bold mb-3">Cadastrar Usuário</h3>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <form th:action="@{/user/salvar}" th:object="${user}" enctype="multipart/form-data" method="post">
+                                <input type="hidden" th:field="*{id}" />
+                                <div class="card-header">
+                                    <div class="card-title">Dados do Usuário</div>
+                                </div>
+                                <div class="card-body">
+                                    <div class="row">
+                                        <div class="col-md-12 col-lg-12">
+                                            <div class="form-group">
+                                                <label for="nome">Nome</label>
+                                                <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="nome"
+                                                        placeholder="Informe o Nome do Usuário"
+                                                        th:field="*{firstName}"
+                                                />
+
+                                            </div>
+
+
+                                            <div class="form-group">
+                                                <label for="email">Email</label>
+                                                <input
+                                                        type="email"
+                                                        class="form-control"
+                                                        id="email"
+                                                        placeholder="Informe o Email do Usuário"
+                                                        th:field="*{email}"
+                                                />
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="username">Nome de Usuário</label>
+                                                <input
+                                                        type="text"
+                                                        class="form-control"
+                                                        id="username"
+                                                        placeholder="Informe o Username do Usuário"
+                                                        th:field="*{username}"
+                                                />
+                                            </div>
+
+                                            <div class="form-group">
+                                                <label for="password">Senha</label>
+                                                <input
+                                                        type="password"
+                                                        class="form-control"
+                                                        id="password"
+                                                        placeholder="Informe a Senha do Usuário"
+                                                        th:field="*{password}"
+                                                />
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="card-action">
+                                    <button class="btn btn-success" type="submit">Salvar</button>
+                                    <button class="btn btn-danger">Cancelar</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:replace="fragments/footer :: footer"></div>
+
+    </div>
+
+</div>
+<div th:replace="fragments/scripts-footer :: scripts-footer"></div>
+
+</body>
+</html>
