@@ -16,16 +16,16 @@ public class UserService implements UserDetailsService {
     }
 
     //GAMBIARRA PRA RODAR
-    @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        return null;
-    }
+   // @Override
+    //public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+      //  return null;
+    //}
 
     // É PRA USAR ESSE
-  //  public UserDetails loadUserByUsername(String username)
-    //        throws UsernameNotFoundException {
-       // return UserRepository.findByUsername(username);
+  public UserDetails loadUserByUsername(String username)
+            throws UsernameNotFoundException {
+        return (UserDetails) UserRepository.findByUsername(username);
 
-  //  }
+    }
 
 }

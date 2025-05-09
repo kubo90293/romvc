@@ -24,8 +24,6 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
-    @Autowired
-    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping
     public String listagem(Model model){
@@ -59,7 +57,7 @@ public class UserController {
 
 
 
-        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
+        
 
 
 
