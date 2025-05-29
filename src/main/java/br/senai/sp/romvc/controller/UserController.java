@@ -1,6 +1,4 @@
 package br.senai.sp.romvc.controller;
-
-
 import br.senai.sp.romvc.model.User;
 import br.senai.sp.romvc.repository.UserRepository;
 import jakarta.validation.Valid;
@@ -24,6 +22,8 @@ public class UserController {
     @Autowired
     private UserRepository userRepository;
 
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @GetMapping
     public String listagem(Model model){
@@ -57,9 +57,9 @@ public class UserController {
 
 
 
-        
+        user.setPassword(bCryptPasswordEncoder.encode(user.getPassword()));
 
-
+        userRepository.save(user);
 
 
         attributes.addFlashAttribute("mensagem", "Usuário salvo com sucesso!");
