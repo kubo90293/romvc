@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Alterar de Aluno</title>
+  <div th:replace="fragments/heads :: heads"></div>
+  <style>
+    .mensagem {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+<!-- ***** Header Area Start ***** -->
+<div th:replace="fragments/header-area :: header-area"></div>
+<!-- ***** Header Area End ***** -->
+
+<!-- ***** Main Banner Area Start ***** -->
+<section class="section main-banner" id="top" data-section="section1">
+  <video autoplay muted loop id="bg-video">
+    <source src="/assets/images/course-video.mp4" type="video/mp4" />
+  </video>
+  <div class="video-overlay header-text">
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="caption">
+            <h6>Alteração</h6>
+            <h2>Alterar Aluno</h2>
+            <p>Complete o formulário abaixo para mudar informaçoes de um aluno do sistema.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- ***** Main Banner Area End ***** -->
+
+<!-- ***** Cadastro de Aluno Section Start ***** -->
+<section class="section" id="Alterar">
+  <div class="container">
+    <div class="section-heading text-center mb-4">
+      <h2>Formulário de Alteração</h2>
+    </div>
+
+    <!-- Alerta de mensagem -->
+    <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      <span th:text="${mensagem}"></span>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-8 offset-lg-2">
+        <form th:action="@{/aluno/salvar}" th:object="${aluno}" method="post">
+          <input type="hidden" th:field="*{id}" />
+
+          <!-- Nome -->
+          <div class="mb-3">
+            <label class="form-label">Nome</label>
+            <input type="text" class="form-control" th:field="*{nome}" />
+            <span class="mensagem" th:if="${#fields.hasErrors('nome')}" th:errors="*{nome}"></span>
+          </div>
+
+          <!-- CPF -->
+          <div class="mb-3">
+            <label class="form-label">CPF</label>
+            <input type="text" class="form-control cpf" th:field="*{cpf}" />
+            <span class="mensagem" th:if="${#fields.hasErrors('cpf')}" th:errors="*{cpf}"></span>
+          </div>
+
+          <!-- Email -->
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="text" class="form-control" th:field="*{email}" />
+            <span class="mensagem" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
+          </div>
+
+          <!-- Telefone -->
+          <div class="mb-3">
+            <label class="form-label">Telefone</label>
+            <input type="text" class="form-control" th:field="*{telefone}" />
+            <span class="mensagem" th:if="${#fields.hasErrors('telefone')}" th:errors="*{telefone}"></span>
+          </div>
+
+          <!-- Data de Nascimento -->
+          <div class="mb-3">
+            <label class="form-label">Data de Nascimento</label>
+            <input type="text" class="form-control" th:field="*{dataNascimento}" />
+            <span class="mensagem" th:if="${#fields.hasErrors('dataNascimento')}" th:errors="*{dataNascimento}"></span>
+          </div>
+
+          <!-- Botões -->
+          <div class="row mt-4">
+            <div class="col-sm-6">
+              <button class="btn btn-success" type="submit">Salvar <i class="fas fa-save"></i></button>
+            </div>
+            <div class="col-sm-6 text-end">
+              <a th:href="@{/aluno/listagem}" class="btn btn-primary">Listagem <i class="fas fa-list"></i></a>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+
+  </div>
+</section>
+<!-- ***** Cadastro de Aluno Section End ***** -->
+
+<!-- ***** Footer Section Start ***** -->
+<section class="contact-us" id="contact">
+  <div th:replace="fragments/footer :: footer"></div>
+</section>
+<!-- ***** Footer Section End ***** -->
+
+<!-- Scripts -->
+<script th:replace="fragments/scripts-footer :: scripts-footer"></script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Education Meeting HTML5 Template</title>
+    <div th:replace="fragments/heads :: heads"></div>
+</head>
+
+<body>
+
+<!-- ***** Header Area Start ***** -->
+<div th:replace="fragments/header-area :: header-area"></div>
+<!-- ***** Header Area End ***** -->
+
+<!-- ***** Main Banner Area Start ***** -->
+<section class="section main-banner" id="top" data-section="section1">
+    <video autoplay muted loop id="bg-video">
+        <source src="/assets/images/course-video.mp4" type="video/mp4" />
+    </video>
+    <div class="video-overlay header-text">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="caption">
+                        <h6>Hello Students</h6>
+                        <h2>Welcome to Education</h2>
+                        <p>This is an edu meeting HTML CSS template provided by TemplateMo...</p>
+                        <div class="main-button-red">
+                            <div class="scroll-to-section"><a href="#alunos">Ver Alunos</a></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- ***** Main Banner Area End ***** -->
+
+<!-- ***** Seção de listagem de alunos ***** -->
+<section class="section" id="alunos">
+    <div class="container">
+
+        <div class="section-heading text-center mb-4">
+            <h2>Listagem de Alunos</h2>
+        </div>
+
+        <!-- Alerta de mensagem -->
+        <div class="alert alert-success alert-dismissible fade show" th:if="${mensagem}">
+            <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+            <span th:text="${mensagem}"></span>
+        </div>
+
+        <!-- Botão de adicionar e formulário de busca -->
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <form th:action="@{/aluno/buscar}" method="post">
+                    <div class="input-group">
+                        <input type="text" name="nome" class="form-control" placeholder="Buscar por nome...">
+                        <button class="btn btn-primary" type="submit">Buscar <i class="fas fa-search"></i></button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-6 text-end">
+                <a class="btn btn-success" th:href="@{/aluno/inserir}">
+                    Adicionar Aluno <i class="fas fa-plus-circle"></i>
+                </a>
+            </div>
+        </div>
+
+        <!-- Tabela de alunos -->
+        <div class="table-responsive">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark">
+                <tr>
+                    <th>ID</th>
+                    <th>Matrícula</th>
+                    <th>Nome</th>
+                    <th>Email</th>
+                    <th class="text-center">Ações</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr th:if="${alunos.empty}">
+                    <td colspan="5" class="text-center">Nenhum aluno encontrado</td>
+                </tr>
+                <tr th:each="aluno : ${alunos}">
+                    <td th:text="${aluno.id}"></td>
+<!--                           -->
+                    <td th:text="${aluno.nome}"></td>
+                    <td th:text="${aluno.email}"></td>
+                    <td class="text-center">
+                        <a th:href="@{/aluno/alterar/{id}(id=${aluno.id})}" class="btn btn-warning btn-sm">
+                            <i class="material-icons" title="Editar">&#xE254;</i>
+                        </a>
+                        <a th:href="@{/aluno/excluir/{id}(id=${aluno.id})}"
+                           th:data-confirm-delete="|Você gostaria de apagar ${aluno.nome}?|"
+                           onclick="if (!confirm(this.getAttribute('data-confirm-delete'))) return false"
+                           class="btn btn-danger btn-sm">
+                            <i class="material-icons" title="Excluir">&#xE872;</i>
+                        </a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+<!-- Outras seções do seu layout moderno continuam aqui -->
+<section class="services">
+    <!-- ... -->
+</section>
+
+<section class="our-facts">
+    <!-- ... -->
+</section>
+
+<section class="contact-us" id="contact">
+    <!-- ... -->
+    <div th:replace="fragments/footer :: footer"></div>
+</section>
+
+<!-- Scripts -->
+<script th:replace="fragments/scripts-footer :: scripts-footer"></script>
+
+</body>
+</html>
