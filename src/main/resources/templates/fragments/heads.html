@@ -2,44 +2,31 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="heads">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta
-            content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
-            name="viewport"
-    />
-    <link
-            rel="icon"
-            th:href="@{/assets/img/kaiadmin/favicon.ico}"
-            type="image/x-icon"
-    />
 
-    <!-- Fonts and icons -->
-    <script th:src="@{/assets/js/plugin/webfont/webfont.min.js}"></script>
-    <script>
-        WebFont.load({
-            google: { families: ["Public Sans:300,400,500,600,700"] },
-            custom: {
-                families: [
-                    "Font Awesome 5 Solid",
-                    "Font Awesome 5 Regular",
-                    "Font Awesome 5 Brands",
-                    "simple-line-icons",
-                ],
-                urls: ["assets/css/fonts.min.css"],
-            },
-            active: function () {
-                sessionStorage.fonts = true;
-            },
-        });
-    </script>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="TemplateMo">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900" rel="stylesheet">
 
-    <!-- CSS Files -->
-    <link rel="stylesheet" th:href="@{/assets/css/bootstrap.min.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/plugins.min.css}" />
-    <link rel="stylesheet" th:href="@{/assets/css/kaiadmin.min.css}" />
+    <!-- Bootstrap core CSS -->
+    <link href="/assets/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
 
-    <!-- CSS Just for demo purpose, don't include it in your project -->
-    <link rel="stylesheet" th:href="@{/assets/css/demo.css}" />
+
+    <!-- Additional CSS Files -->
+    <link rel="stylesheet" href="/assets/css/fontawesome.css">
+    <link rel="stylesheet" href="/assets/css/templatemo-edu-meeting.css">
+    <link rel="stylesheet" href="/assets/css/owl.css">
+    <link rel="stylesheet" href="/assets/css/lightbox.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <!--
+
+    TemplateMo 569 Edu Meeting
+
+    https://templatemo.com/tm-569-edu-meeting
+
+    -->
 </div>
 </body>
 </html>

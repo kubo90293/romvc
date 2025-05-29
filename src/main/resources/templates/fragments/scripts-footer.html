@@ -2,70 +2,66 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <body>
 <div th:fragment="scripts-footer">
-    <!--   Core JS Files   -->
-    <script th:src="@{/assets/js/core/jquery-3.7.1.min.js}"></script>
-    <script th:src="@{/assets/js/core/popper.min.js}"></script>
-    <script th:src="@{/assets/js/core/bootstrap.min.js}"></script>
 
-    <!-- jQuery Scrollbar -->
-    <script th:src="@{/assets/js/plugin/jquery-scrollbar/jquery.scrollbar.min.js}"></script>
+    <!-- Scripts -->
+    <!-- Bootstrap core JavaScript -->
+    <script src="/assets/vendor/jquery/jquery.min.js"></script>
+    <script src="/assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
-    <!-- Chart JS -->
-    <script th:src="@{/assets/js/plugin/chart.js/chart.min.js}"></script>
-
-    <!-- jQuery Sparkline -->
-    <script th:src="@{/assets/js/plugin/jquery.sparkline/jquery.sparkline.min.js}"></script>
-
-    <!-- Chart Circle -->
-    <script th:src="@{/assets/js/plugin/chart-circle/circles.min.js}"></script>
-
-    <!-- Datatables -->
-    <script th:src="@{/assets/js/plugin/datatables/datatables.min.js}"></script>
-
-    <!-- Bootstrap Notify -->
-    <script th:src="@{/assets/js/plugin/bootstrap-notify/bootstrap-notify.min.js}"></script>
-
-    <!-- jQuery Vector Maps -->
-    <script th:src="@{/assets/js/plugin/jsvectormap/jsvectormap.min.js}"></script>
-    <script th:src="@{/assets/js/plugin/jsvectormap/world.js}"></script>
-
-    <!-- Sweet Alert -->
-    <script th:src="@{/assets/js/plugin/sweetalert/sweetalert.min.js}"></script>
-
-    <!-- Kaiadmin JS -->
-    <script th:src="@{/assets/js/kaiadmin.min.js}"></script>
-
-    <!-- Kaiadmin DEMO methods, don't include it in your project! -->
-    <script th:src="@{/assets/js/setting-demo.js}"></script>
-    <script th:src="@{/assets/js/demo.js}"></script>
+    <script src="/assets/js/isotope.min.js"></script>
+    <script src="/assets/js/owl-carousel.js"></script>
+    <script src="/assets/js/lightbox.js"></script>
+    <script src="/assets/js/tabs.js"></script>
+    <script src="/assets/js/video.js"></script>
+    <script src="/assets/js/slick-slider.js"></script>
+    <script src="/assets/js/custom.js"></script>
     <script>
-        $("#lineChart").sparkline([102, 109, 120, 99, 110, 105, 115], {
-            type: "line",
-            height: "70",
-            width: "100%",
-            lineWidth: "2",
-            lineColor: "#177dff",
-            fillColor: "rgba(23, 125, 255, 0.14)",
+        //according to loftblog tut
+        $('.nav li:first').addClass('active');
+
+        var showSection = function showSection(section, isAnimate) {
+            var
+                direction = section.replace(/#/, ''),
+                reqSection = $('.section').filter('[data-section="' + direction + '"]'),
+                reqSectionPos = reqSection.offset().top - 0;
+
+            if (isAnimate) {
+                $('body, html').animate({
+                        scrollTop: reqSectionPos },
+                    800);
+            } else {
+                $('body, html').scrollTop(reqSectionPos);
+            }
+
+        };
+
+        var checkSection = function checkSection() {
+            $('.section').each(function () {
+                var
+                    $this = $(this),
+                    topEdge = $this.offset().top - 80,
+                    bottomEdge = topEdge + $this.height(),
+                    wScroll = $(window).scrollTop();
+                if (topEdge < wScroll && bottomEdge > wScroll) {
+                    var
+                        currentId = $this.data('section'),
+                        reqLink = $('a').filter('[href*=\\#' + currentId + ']');
+                    reqLink.closest('li').addClass('active').
+                    siblings().removeClass('active');
+                }
+            });
+        };
+
+        $('.main-menu, .responsive-menu, .scroll-to-section').on('click', 'a', function (e) {
+            e.preventDefault();
+            showSection($(this).attr('href'), true);
         });
 
-        $("#lineChart2").sparkline([99, 125, 122, 105, 110, 124, 115], {
-            type: "line",
-            height: "70",
-            width: "100%",
-            lineWidth: "2",
-            lineColor: "#f3545d",
-            fillColor: "rgba(243, 84, 93, .14)",
-        });
-
-        $("#lineChart3").sparkline([105, 103, 123, 100, 95, 105, 115], {
-            type: "line",
-            height: "70",
-            width: "100%",
-            lineWidth: "2",
-            lineColor: "#ffa534",
-            fillColor: "rgba(255, 165, 52, .14)",
+        $(window).scroll(function () {
+            checkSection();
         });
     </script>
+
 </div>
 </body>
 </html>
